@@ -1,0 +1,50 @@
+<!-- <p>content-list works!</p> -->
+
+<div class="p-4">
+    <p class="display-1 text-white">My Movies</p>
+    <div class="row">
+      <div
+        class="col-md-4 mb-4"
+        *ngFor="let myFavMovie of myFavMovies; let i = index"
+      >
+        <div
+          class="card text-white"
+          style="background-color: #efe9e9; border: 1px solid black;margin: 2px; padding: 3px;"
+          [ngClass]="i == 0 ? 'border__card' : ''"
+          *ngIf="i < 5"
+        >
+          <div class="card-body">
+            <div class="card">
+
+                <img
+
+                  class="card-img-left"
+                  src="{{ myFavMovie.imgURL }}"
+                  height="350"
+                  width="200"
+                  (click)="showMovieInfo(myFavMovie.id, myFavMovie.title)"
+                  alt="Card image cap"
+                />
+              </div>
+              <div class="container">
+              <div class="col-md-8">
+                <header class="card-title" *ngIf="myFavMovie?.title">
+                  {{ myFavMovie.title }}
+                </header>
+                <p class="card-text" *ngIf="myFavMovie?.description">
+                  {{ myFavMovie.description }}
+                </p>
+  
+                <p class="card-text" *ngIf="myFavMovie?.moviename">
+                  <strong>MovieName</strong> {{ myFavMovie?.moviename }}
+                </p>
+                <p class="card-text" *ngIf="myFavMovie?.actor">
+                  <strong>Actor</strong> {{ myFavMovie?.actor }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
