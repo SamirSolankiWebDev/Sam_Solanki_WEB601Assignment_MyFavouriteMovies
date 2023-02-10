@@ -8,6 +8,6 @@ actor:string;
 rating:number;
 imgURL:string;
 price: number;
-Runtime:number;
+runtime:number;
 
 }

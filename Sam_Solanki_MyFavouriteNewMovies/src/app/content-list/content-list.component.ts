@@ -107,6 +107,38 @@ export class ContentListComponent implements OnInit {
       imgURL:'https://resizing.flixster.com/ZX1nAlqUr_ZSTEYaEEZyKrsgs6k=/fit-in/180x240/v2/https://flxt.tmsimg.com/assets/p9895254_p_v8_an.jpg',
       
     },
+    {
+      id: 8,
+      title: 'CAPTAIN New ',
+      description:'Suspenseful and politically astute, Captain America: The Winter Soldier is a superior entry in the Avengers canon and is sure to thrill Marvel diehards',
+      moviename:'CAPTAIN AMERICA:New Added ',
+      actor: 'Jonathan Swift',
+      rating:11,
+      price:340,
+      runtime:120,
+      imgURL:'https://resizing.flixster.com/ZX1nAlqUr_ZSTEYaEEZyKrsgs6k=/fit-in/180x240/v2/https://flxt.tmsimg.com/assets/p9895254_p_v8_an.jpg',
+      
+    },
+    {
+      id: 9,
+      title: 'IronManNewAdded ',
+      description:'Suspenseful and politically astute, Captain America: The Winter Soldier is a superior entry in the Avengers canon and is sure to thrill Marvel diehards',
+      moviename:'IronMan',
+      actor: 'Jonathan Swift',
+      rating:11,
+      price:200,
+      runtime:90,
+      imgURL:'https://resizing.flixster.com/gjQfPXNYdWKnjmFOqpS4jkaXjaU=/fit-in/180x240/v2/https://flxt.tmsimg.com/assets/p9259486_p_v8_af.jpg',
+      
+    }, 
+    {
+      id: 10,
+      title: 'NoTypeSet ',
+      moviename:'NoIronMan',
+      actor: 'Jonathan Swift',
+      imgURL:'https://resizing.flixster.com/gjQfPXNYdWKnjmFOqpS4jkaXjaU=/fit-in/180x240/v2/https://flxt.tmsimg.com/assets/p9259486_p_v8_af.jpg',
+      
+    },
   ];
 
   showMovieInfo(id: any, title: String) {
