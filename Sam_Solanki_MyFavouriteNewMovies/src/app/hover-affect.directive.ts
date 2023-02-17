@@ -14,12 +14,14 @@ export class HoverAffectDirective {
       this.el.nativeElement.style.fontWeight = this.style;
     } else {
       this.el.nativeElement.style.textDecoration = 'underline';
+      this.el.nativeElement.style.fontWeight = 'bold';
     }
   }
 
   @HostListener('mouseleave') onMouseLeave()  {
     this.el.nativeElement.style.textDecoration = 'none';
     this.el.nativeElement.style.fontWeight = 'normal';
+    
 }
 
 }
