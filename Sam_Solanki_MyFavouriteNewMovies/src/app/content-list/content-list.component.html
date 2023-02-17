@@ -24,54 +24,95 @@
 
 <h1>Movies Without Type</h1>
 <div *ngFor="let content of contents | filterContentType" class="withouttype">
-  <img
-  class="card-img-left"
-  [src]="content.imgURL"
-  height="350"
-  width="200"
-  (click)="showMovieInfo(content.id, content.title)"
-  alt="Card image cap"
-/>
+   <!-- <img
+   class="card-img-left"
+   [src]="content.imgURL"
+   height="350"
+   width="200"
+   (click)="showMovieInfo(content.id, content.title)"
+   alt="Card image cap"
+   /> -->
     <h2>{{content.title}}</h2>
     <p><strong>Movie Name:</strong> {{content.moviename}}</p>
-    <p>Description: {{content.description}}</p>
+    <p appHoverAffect>Description: {{content.description}}</p>
+   
+    <div>
+      Image: 
+      <p *ngFor="let type of content.type" [appHoverAffect]="'bold'">{{type}}</p>
+    </div>
+
+    <div *ngIf="content.imgURL; else defaultImg">
+      <img (click)="logIdTitle(content)" [src]="content.imgURL">
+    </div>
+    <ng-template #defaultImg>
+      <img (click)="logIdTitle(content)" [src]="defaultImageURL">
+    </ng-template>
     
 </div>
 <br> <hr> 
 
 <h1>Action Type</h1>
 <div *ngFor="let content of contents | filterContentType:'Action'" class="action">
-  <img
+  <!-- <img
    class="card-img-left"
    [src]="content.imgURL"
     height="350"
     width="200"
     (click)="showMovieInfo(content.id, content.title)"
     alt="Card image cap"
-    />
+    /> -->
   <h2>{{content.title}}</h2>
   <p><strong>Movie Name:</strong> {{content.moviename}}</p>
-  <p>Description: {{content.description}}</p>
-  <p>Type: {{content.type}}</p>
+  <p>Description: {{content.Description}}</p>
+  <p appHoverAffect>Type: {{content.type}}</p>
+   
+    <div>
+      Image: 
+      <p *ngFor="let type of content.type" [appHoverAffect]="'bold'">{{type}}</p>
+    </div>
+
+    <div *ngIf="content.imgURL; else defaultImg">
+      <img (click)="logIdTitle(content)" [src]="content.imgURL">
+    </div>
+    <ng-template #defaultImg>
+      <img (click)="logIdTitle(content)" [src]="defaultImageURL">
+    </ng-template>
+
+
 </div>
 <br> <hr> 
 
 
 <h1>Comedy Type</h1>
-<div *ngFor="let content of contents | filterContentType:'Action'" class="drama">
-  <img
+<div *ngFor="let content of contents | filterContentType:'Comedy'" class="drama">
+  <!-- <img
    class="card-img-left"
    [src]="content.imgURL"
     height="350"
     width="200"
     (click)="showMovieInfo(content.id, content.title)"
     alt="Card image cap"
-    />
+    /> -->
   <h2>{{content.title}}</h2>
   <p><strong>Movie Name:</strong> {{content.moviename}}</p>
   <p>Description: {{content.description}}</p>
-  <p>Type: {{content.type}}</p>
-</div>
+  <p appHoverAffect>Type: {{content.type}}</p>
+   
+  <div>
+    Image: 
+    <p *ngFor="let type of content.type" [appHoverAffect]="'bold'">{{type}}</p>
+  </div>
+
+  <div *ngIf="content.imgURL; else defaultImg">
+    <img (click)="logIdTitle(content)" [src]="content.imgURL">
+  </div>
+  <ng-template #defaultImg>
+    <img (click)="logIdTitle(content)" [src]="defaultImageURL">
+  </ng-template>
+  
 </div>
 
 </div>
+</div>
+
+

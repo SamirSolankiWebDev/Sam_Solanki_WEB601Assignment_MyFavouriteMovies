@@ -23,6 +23,7 @@ import { Content } from '../helper-files/content-interface';
 })
 export class ContentListComponent implements OnInit {
   // constructor() {}
+  defaultImageURL: string = 'https://media.istockphoto.com/id/1265221960/vector/page-not-found-error-with-film-flap-design.jpg?s=170667a&w=0&k=20&c=GgmqFs3c6Gpv0gqr2joc398Z3ghR6w3yTnS_Oed57cg=';
 
   contents: Content[];
   movieSearchText:string = '';
@@ -168,6 +169,20 @@ myFavMovie: any;
       rating:9,
       type: 'Action',
       imgURL:'https://resizing.flixster.com/ZX1nAlqUr_ZSTEYaEEZyKrsgs6k=/fit-in/180x240/v2/https://flxt.tmsimg.com/assets/p9895254_p_v8_an.jpg',
+      publisher: 'loream ipsum',
+      color: '#6B5C9A',
+      fontFamily: 'Roboto',
+      filteredRow: false,
+      
+    },
+     {
+      id: 8,
+      title: 'CAPTAIN',
+      description:'Suspenseful and politically astute, Captain America: The Winter Soldier is a superior entry in the Avengers canon and is sure to thrill Marvel diehards',
+      moviename:'CAP',
+      actor: 'Jonathan Swift',
+      rating:9,
+      type: 'Action',
       publisher: 'loream ipsum',
       color: '#6B5C9A',
       fontFamily: 'Roboto',
