@@ -1,50 +1,77 @@
-<!-- <p>content-list works!</p> -->
-
 <div class="p-4">
-    <p class="display-1 text-white">My Movies</p>
-    <div class="row">
-      <div
-        class="col-md-4 mb-4"
-        *ngFor="let myFavMovie of myFavMovies; let i = index"
-      >
-        <div
-          class="card text-white"
-          style="background-color: #efe9e9; border: 1px solid black;margin: 2px; padding: 3px;"
-          [ngClass]="i == 0 ? 'border__card' : ''"
-          *ngIf="i < 5"
-        >
-          <div class="card-body">
-            <div class="card">
+  <h1 style="color: green">My Movies</h1>
 
-                <img
+<input type="text" [(ngModel)]="movieSearchText">
+<button (click)="SearchTitle()">Search Movies</button>
 
-                  class="card-img-left"
-                  src="{{ myFavMovie.imgURL }}"
-                  height="350"
-                  width="200"
-                  (click)="showMovieInfo(myFavMovie.id, myFavMovie.title)"
-                  alt="Card image cap"
-                />
-              </div>
-              <div class="container">
-              <div class="col-md-8">
-                <header class="card-title" *ngIf="myFavMovie?.title">
-                  {{ myFavMovie.title }}
-                </header>
-                <p class="card-text" *ngIf="myFavMovie?.description">
-                  {{ myFavMovie.description }}
-                </p>
-  
-                <p class="card-text" *ngIf="myFavMovie?.moviename">
-                  <strong>MovieName</strong> {{ myFavMovie?.moviename }}
-                </p>
-                <p class="card-text" *ngIf="myFavMovie?.actor">
-                  <strong>Actor</strong> {{ myFavMovie?.actor }}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
+<p *ngIf="searchResult !== null" >
+    <span [style.color]="searchResult ? 'green' : 'red'">
+        {{searchResult ? 'Movie Found' : 'Movies Not Found'}}
+    </span>
+</p>
+
+<!-- <p> *ng-if="searchResult = content.title">
+  <span [style.color]="searchResult ? 'green' : 'red'">
+    {{searchResult ? 'Movie Found' : 'Movies Not Found'}}
+</span>
+</p> -->
+
+
+<br> 
+
+<div class="container">
+
+<h1>Movies Without Type</h1>
+<div *ngFor="let content of contents | filterContentType" class="withouttype">
+  <img
+  class="card-img-left"
+  [src]="content.imgURL"
+  height="350"
+  width="200"
+  (click)="showMovieInfo(content.id, content.title)"
+  alt="Card image cap"
+/>
+    <h2>{{content.title}}</h2>
+    <p><strong>Movie Name:</strong> {{content.moviename}}</p>
+    <p>Description: {{content.description}}</p>
+    
+</div>
+<br> <hr> 
+
+<h1>Action Type</h1>
+<div *ngFor="let content of contents | filterContentType:'Action'" class="action">
+  <img
+   class="card-img-left"
+   [src]="content.imgURL"
+    height="350"
+    width="200"
+    (click)="showMovieInfo(content.id, content.title)"
+    alt="Card image cap"
+    />
+  <h2>{{content.title}}</h2>
+  <p><strong>Movie Name:</strong> {{content.moviename}}</p>
+  <p>Description: {{content.description}}</p>
+  <p>Type: {{content.type}}</p>
+</div>
+<br> <hr> 
+
+
+<h1>Comedy Type</h1>
+<div *ngFor="let content of contents | filterContentType:'Action'" class="drama">
+  <img
+   class="card-img-left"
+   [src]="content.imgURL"
+    height="350"
+    width="200"
+    (click)="showMovieInfo(content.id, content.title)"
+    alt="Card image cap"
+    />
+  <h2>{{content.title}}</h2>
+  <p><strong>Movie Name:</strong> {{content.moviename}}</p>
+  <p>Description: {{content.description}}</p>
+  <p>Type: {{content.type}}</p>
+</div>
+</div>
+
+</div>
