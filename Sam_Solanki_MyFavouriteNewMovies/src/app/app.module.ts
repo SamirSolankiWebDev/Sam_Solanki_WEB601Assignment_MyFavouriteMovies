@@ -8,6 +8,7 @@ import { ContentListComponent } from './content-list/content-list.component';
 import { FilterContentTypePipe } from './filter-content-type.pipe';
 
 import { HoverAffectDirective } from './hover-affect.directive';
+import { CreateContentComponent } from './create-content/create-content.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { HoverAffectDirective } from './hover-affect.directive';
     FilterContentTypePipe,
 
     HoverAffectDirective,
+     CreateContentComponent,
 
   ],
   imports: [BrowserModule, FormsModule],
