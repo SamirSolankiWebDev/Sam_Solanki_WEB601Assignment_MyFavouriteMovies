@@ -1,118 +1,82 @@
-<div class="p-4">
-  <h1 style="color: green">My Movies</h1>
+<app-create-content (createEvent)="addContent($event)">
+  
+</app-create-content>
+<p *ngIf="failedStringMessage !== ''">{{failedStringMessage}}</p>
+<br> <hr> <br>
 
 <input type="text" [(ngModel)]="movieSearchText">
-<button (click)="SearchTitle()">Search Movies</button>
+<button (click)="SearchTitle()">Search</button>
 
 
 <p *ngIf="searchResult !== null" >
     <span [style.color]="searchResult ? 'green' : 'red'">
-        {{searchResult ? 'Movie Found' : 'Movies Not Found'}}
+        {{searchResult ? 'Title Found' : 'Title NOt Found'}}
     </span>
 </p>
 
-<!-- <p> *ng-if="searchResult = content.title">
-  <span [style.color]="searchResult ? 'green' : 'red'">
-    {{searchResult ? 'Movie Found' : 'Movies Not Found'}}
-</span>
-</p> -->
+<br> <hr> <br>
 
-
-<br> 
-
-<div class="container">
-
-<h1>Movies Without Type</h1>
-<div *ngFor="let content of contents | filterContentType" class="withouttype">
-   <!-- <img
-   class="card-img-left"
-   [src]="content.imgURL"
-   height="350"
-   width="200"
-   (click)="showMovieInfo(content.id, content.title)"
-   alt="Card image cap"
-   /> -->
+<h1>Without Type</h1>
+<div *ngFor="let content of contents | filterContentType" class="noType">
     <h2>{{content.title}}</h2>
-    <p><strong>Movie Name:</strong> {{content.moviename}}</p>
-    <p appHoverAffect>Description: {{content.description}}</p>
-   
+    <p>{{content.description}}</p>
+    <p>Creator: {{content.creator}}</p>
+    <p appHoverAffect>Type: {{content.type}}</p>
+
     <div>
-      Image: 
-      <p *ngFor="let type of content.type" [appHoverAffect]="'bold'">{{type}}</p>
+        Tags: 
+        <p *ngFor="let tag of content.tags" [appHoverAffect]="'bold'">{{tag}}</p>
     </div>
 
-    <div *ngIf="content.imgURL; else defaultImg">
-      <img (click)="logIdTitle(content)" [src]="content.imgURL">
+    <div *ngIf="content.imageUrl; else defaultImg">
+        <img (click)="logIdTitle(content)" [src]="content.imageUrl">
     </div>
     <ng-template #defaultImg>
-      <img (click)="logIdTitle(content)" [src]="defaultImageURL">
+        <img (click)="logIdTitle(content)" [src]="defaultImageURL">
     </ng-template>
-    
 </div>
-<br> <hr> 
+
+<br> <hr> <br>
 
 <h1>Action Type</h1>
-<div *ngFor="let content of contents | filterContentType:'Action'" class="action">
-  <!-- <img
-   class="card-img-left"
-   [src]="content.imgURL"
-    height="350"
-    width="200"
-    (click)="showMovieInfo(content.id, content.title)"
-    alt="Card image cap"
-    /> -->
-  <h2>{{content.title}}</h2>
-  <p><strong>Movie Name:</strong> {{content.moviename}}</p>
-  <p>Description: {{content.Description}}</p>
-  <p appHoverAffect>Type: {{content.type}}</p>
-   
+<div *ngFor="let content of contents | filterContentType:'Action'" class="Action">
+    <h2>{{content.title}}</h2>
+    <p>{{content.description}}</p>
+    <p>Creator: {{content.creator}}</p>
+    <p appHoverAffect>Type: {{content.type}}</p>
+
     <div>
-      Image: 
-      <p *ngFor="let type of content.type" [appHoverAffect]="'bold'">{{type}}</p>
+        Tags: 
+        <p *ngFor="let tag of content.tags" [appHoverAffect]="'bold'">{{tag}}</p>
     </div>
 
-    <div *ngIf="content.imgURL; else defaultImg">
-      <img (click)="logIdTitle(content)" [src]="content.imgURL">
+    <div *ngIf="content.imageUrl; else defaultImg">
+        <img (click)="logIdTitle(content)" [src]="content.imageUrl">
     </div>
     <ng-template #defaultImg>
-      <img (click)="logIdTitle(content)" [src]="defaultImageURL">
+        <img (click)="logIdTitle(content)" [src]="defaultImageURL">
     </ng-template>
-
-
-</div>
-<br> <hr> 
-
-
-<h1>Comedy Type</h1>
-<div *ngFor="let content of contents | filterContentType:'Comedy'" class="drama">
-  <!-- <img
-   class="card-img-left"
-   [src]="content.imgURL"
-    height="350"
-    width="200"
-    (click)="showMovieInfo(content.id, content.title)"
-    alt="Card image cap"
-    /> -->
-  <h2>{{content.title}}</h2>
-  <p><strong>Movie Name:</strong> {{content.moviename}}</p>
-  <p>Description: {{content.description}}</p>
-  <p appHoverAffect>Type: {{content.type}}</p>
-   
-  <div>
-    Image: 
-    <p *ngFor="let type of content.type" [appHoverAffect]="'bold'">{{type}}</p>
-  </div>
-
-  <div *ngIf="content.imgURL; else defaultImg">
-    <img (click)="logIdTitle(content)" [src]="content.imgURL">
-  </div>
-  <ng-template #defaultImg>
-    <img (click)="logIdTitle(content)" [src]="defaultImageURL">
-  </ng-template>
-  
-</div>
-
-</div>
 </div>
 
 
+<br> <hr> <br>
+
+<h1>Drama Type</h1>
+<div *ngFor="let content of contents | filterContentType:'Action'" class="Drama">
+    <h2>{{content.title}}</h2>
+    <p>{{content.description}}</p>
+    <p>Creator: {{content.creator}}</p>
+    <p appHoverAffect>Type: {{content.type}}</p>
+
+    <div>
+        Tags: 
+        <p *ngFor="let tag of content.tags" [appHoverAffect]="'bold'">{{tag}}</p>
+    </div>
+    
+    <div *ngIf="content.imageUrl; else defaultImg">
+        <img (click)="logIdTitle(content)" [src]="content.imageUrl">
+    </div>
+    <ng-template #defaultImg>
+        <img (click)="logIdTitle(content)" [src]="defaultImageURL">
+    </ng-template>
+</div>

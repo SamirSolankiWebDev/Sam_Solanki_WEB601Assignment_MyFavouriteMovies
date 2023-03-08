@@ -21,17 +21,19 @@ import { Content } from '../helper-files/content-interface';
    styleUrls: ['./content-list.component.less']
   
 })
-export class ContentListComponent implements OnInit {
+export class ContentListComponent  {
   // constructor() {}
   defaultImageURL: string = 'https://media.istockphoto.com/id/1265221960/vector/page-not-found-error-with-film-flap-design.jpg?s=170667a&w=0&k=20&c=GgmqFs3c6Gpv0gqr2joc398Z3ghR6w3yTnS_Oed57cg=';
 
   contents: Content[];
   movieSearchText:string = '';
   searchResult: boolean | null = null;
+  failedStringMessage: string = '';
 
   public inputValue: String = '';
   public searchMsg: String = '';
-myFavMovie: any;
+
+// myFavMovie: any;
 
   logIdTitle(card: any){
     console.log(`${card.id}, ${card.title}`);
@@ -42,7 +44,22 @@ myFavMovie: any;
   }
 
 
-  ngOnInit(): void {}
+  // ngOnInit(): void {}
+
+  addContent(newInfo: any){
+    const promise = new Promise((resolve, reject) => {
+      this.contents.push(newInfo);
+      this.contents = [...this.contents]
+      resolve(newInfo.title);
+    });
+
+    promise.then(title => {
+      console.log(`Information added successfully, ${title}`);
+      this.failedStringMessage = '';
+    }).catch(error => {
+      this.failedStringMessage = "Information not added";
+    });
+  }
 
   constructor(){
     this.contents =  [
