@@ -14,13 +14,13 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class CreateContentComponent {
 //  constructor(private movieData: AddMyMoviesService) {}
 
-  information: any = {}
-  @Output() createEvent = new EventEmitter<any>();
+  valueContainer: any = {}
+  @Output() eventAction = new EventEmitter<any>();
 
 
   addContentEvents(){
-    this.createEvent.emit(this.information);
-    this.information = {};
+    this.eventAction.emit(this.valueContainer);
+    this.valueContainer = {};
   }
 
  
