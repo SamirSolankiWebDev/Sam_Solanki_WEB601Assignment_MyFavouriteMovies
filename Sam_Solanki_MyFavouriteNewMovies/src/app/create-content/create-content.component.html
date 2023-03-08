@@ -1,4 +1,4 @@
-<!-- <p>create-content works!</p> -->
+<!-- <p>create-content works!</p>
 
 <p
   class="btn btn-dark d-block"
@@ -133,4 +133,20 @@
     </div>
   </div>
 </form>
-<hr />
+<hr /> -->
+
+<div>
+
+  ID: <br> <input type="number" [(ngModel)]="information.id"> <br> <br>
+  Title: <br> <input type="text" [(ngModel)]="information.title"> <br> <br>
+  Description: <br> <input type="text" [(ngModel)]="information.description"> <br> <br>
+  Moviename: <br> <input type="text" [(ngModel)]="information.moviename"> <br> <br>
+  ImageUrl: <br> <input type="text" [(ngModel)]="information.imgURL"> <br> <br> 
+  Actor: <br> <input type="text" [(ngModel)]="information.actor"> <br> <br>
+  Rating: <br> <input type="text" [(ngModel)]="information.rating"> <br> <br>
+  color: <br> <input type="text" [(ngModel)]="information.color"> <br> <br>
+  publisher: <br> <input type="text" [(ngModel)]="information.publisher"> <br> <br>
+  <div>
+      <button (click)="addContentEvents()">Add Content Event</button>
+  </div>
+</div>
