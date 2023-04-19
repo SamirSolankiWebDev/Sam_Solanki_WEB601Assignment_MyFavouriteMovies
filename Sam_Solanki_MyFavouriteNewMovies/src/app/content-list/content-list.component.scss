@@ -1,0 +1,68 @@
+.card{
+  color: black;
+  border: 1px solid black;
+  margin: 12px 0px;
+  text-align: center;
+  border-radius: 48px;
+}
+.card-title,
+.card-text {
+  padding-left: 26px !important;
+}
+mat-card-header{
+  justify-content: center;
+}
+
+.border__card {
+  border: 2px solid black !important;
+}
+
+.result__found_border {
+  transition: 0.3s ease-in-out;
+  border: 8px solid greenyellow !important;
+  box-shadow: 0px 12px 24px rgba(172, 255, 47, 0.301);
+}
+.success-txt {
+  color: green;
+}
+
+.error-txt {
+  color: red;
+}
+
+.no-type{
+  color: black;
+  background-color: antiquewhite;
+  box-shadow: 1px 1px 20px 2px rgb(240, 7, 7);
+  border-radius: 48px;
+  
+}
+
+.classic-type{
+  color:black;
+  background-color: rgb(218, 148, 10); 
+  box-shadow: 1px 1px 20px 2px  rgb(250, 167, 3);
+  border-radius: 48px;
+}
+
+.Action-type{
+  color:white;
+  background-color: black;
+  box-shadow: 1px 1px 20px 2px  rgb(211, 231, 31);
+  border-radius: 48px;
+}
+
+
+  
+
+
+.searchbyTitle {
+ text-align:center;
+  
+}
+
+.searchbyTitle input{
+  width:500px;
+  padding: 8px;
+  
+}
