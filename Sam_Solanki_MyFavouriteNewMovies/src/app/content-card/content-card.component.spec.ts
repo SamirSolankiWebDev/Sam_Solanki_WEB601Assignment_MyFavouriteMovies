@@ -11,7 +11,9 @@ describe('ContentCardComponent', () => {
       declarations: [ ContentCardComponent ]
     })
     .compileComponents();
+  });
 
+  beforeEach(() => {
     fixture = TestBed.createComponent(ContentCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

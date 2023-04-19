@@ -2,17 +2,19 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Content } from './helper-files/content-interface';
 
 @Pipe({
-  name: 'filterContentType'
+  name: 'filterContentType',
 })
 export class FilterContentTypePipe implements PipeTransform {
-
-
-  transform(contentItem: Content[], filter?: String): any {
-    if(!filter){
-      return contentItem.filter(item => !item.type);
+  transform(contents: Content[], type?: string): Content[] {
+    if(!contents){
+      return [];
     }
 
-    return contentItem.filter(item => item.type === filter);
+    if (!type){
+      return contents.filter(content => !content.type);
+    }
+
+    return contents.filter(content => content.type === type);
   }
 
 }

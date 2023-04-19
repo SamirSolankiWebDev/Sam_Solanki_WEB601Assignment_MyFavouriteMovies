@@ -1,118 +1,232 @@
-<div class="p-4">
-  <h1 style="color: green">My Movies</h1>
+  <main>
+      <div class="SearchbyTitle">
+        <input type="number" [(ngModel)]="IDsearch" placeholder=" Search By ID Here" >
+        <!-- <button
+          (click)="SearchbyTitle()">Search
+        </button> -->
+          <button
+          (click)="searchId(IDsearch)">Search
+        </button>
+      </div>
+      <div *ngIf="Search !== null"  >
+        <p [style.color] = "Search ? 'green' : 'red'" >
+           {{ Search ? 'Matched' : 'Not Matched'}}
+           </p>
+      </div>
 
-<input type="text" [(ngModel)]="movieSearchText">
-<button (click)="SearchTitle()">Search Movies</button>
-
-
-<p *ngIf="searchResult !== null" >
-    <span [style.color]="searchResult ? 'green' : 'red'">
-        {{searchResult ? 'Movie Found' : 'Movies Not Found'}}
-    </span>
-</p>
-
-<!-- <p> *ng-if="searchResult = content.title">
-  <span [style.color]="searchResult ? 'green' : 'red'">
-    {{searchResult ? 'Movie Found' : 'Movies Not Found'}}
-</span>
-</p> -->
-
-
-<br> 
-
-<div class="container">
-
-<h1>Movies Without Type</h1>
-<div *ngFor="let content of contents | filterContentType" class="withouttype">
-   <!-- <img
-   class="card-img-left"
-   [src]="content.imgURL"
-   height="350"
-   width="200"
-   (click)="showMovieInfo(content.id, content.title)"
-   alt="Card image cap"
-   /> -->
-    <h2>{{content.title}}</h2>
-    <p><strong>Movie Name:</strong> {{content.moviename}}</p>
-    <p appHoverAffect>Description: {{content.description}}</p>
-   
-    <div>
-      Image: 
-      <p *ngFor="let type of content.type" [appHoverAffect]="'bold'">{{type}}</p>
-    </div>
-
-    <div *ngIf="content.imgURL; else defaultImg">
-      <img (click)="logIdTitle(content)" [src]="content.imgURL">
-    </div>
-    <ng-template #defaultImg>
-      <img (click)="logIdTitle(content)" [src]="defaultImageURL">
-    </ng-template>
+      
     
-</div>
-<br> <hr> 
+  </main>
 
-<h1>Action Type</h1>
-<div *ngFor="let content of contents | filterContentType:'Action'" class="action">
-  <!-- <img
-   class="card-img-left"
-   [src]="content.imgURL"
-    height="350"
-    width="200"
-    (click)="showMovieInfo(content.id, content.title)"
-    alt="Card image cap"
-    /> -->
-  <h2>{{content.title}}</h2>
-  <p><strong>Movie Name:</strong> {{content.moviename}}</p>
-  <p>Description: {{content.Description}}</p>
-  <p appHoverAffect>Type: {{content.type}}</p>
+<!-- //////////// AFTER SEARCH CODE  -->
+
+<div>
+  <h2>Item Found by Search</h2>
+  <div *ngFor="let myFavMovie of myFavMovies | filterContentType:'classic'" class="classic-type">
    
-    <div>
-      Image: 
-      <p *ngFor="let type of content.type" [appHoverAffect]="'bold'">{{type}}</p>
-    </div>
+    <div class="card">
+        
+      <div *ngFor="let result of searchResults">
+       
+        <div *ngIf="result.imgURL; else noImg">
+          <img
+          class="card-img-left"
+          src="{{ result.imgURL }}"
+          height="400"
+          width="400"
+          (click)="showMovieInfo(result.id, result.title)"
+          alt="Card image cap"/>
+      </div>
+      <ng-template #noImg>
+        <img
+        class="card-img-left"
+        src="{{ defaultmovieimg }}"
+        height="400"
+        width="400"
+        (click)="showMovieInfo(result.id, result.title)"
+        alt="Card image cap"/>
+      </ng-template>
+       <!-- /////////////// -->
+        <h5 class="card-title" *ngIf="myFavMovie?.title">
+          {{ result.title }}
+        </h5>
+        <p class="card-text" *ngIf="myFavMovie?.description">
+          {{ result.description }}
+        </p>
 
-    <div *ngIf="content.imgURL; else defaultImg">
-      <img (click)="logIdTitle(content)" [src]="content.imgURL">
-    </div>
-    <ng-template #defaultImg>
-      <img (click)="logIdTitle(content)" [src]="defaultImageURL">
-    </ng-template>
+      </div>
 
-
+        <!-- <div class="col-md-8">
+          <h5 class="card-title" *ngIf="myFavMovie?.title">
+            {{ myFavMovie.title }}
+          </h5>
+          <p class="card-text" *ngIf="myFavMovie?.description">
+            {{ myFavMovie.description }}
+          </p>
+          
+        </div> -->
+      </div>
+  </div>
 </div>
-<br> <hr> 
 
 
-<h1>Comedy Type</h1>
-<div *ngFor="let content of contents | filterContentType:'Comedy'" class="drama">
-  <!-- <img
-   class="card-img-left"
-   [src]="content.imgURL"
-    height="350"
-    width="200"
-    (click)="showMovieInfo(content.id, content.title)"
-    alt="Card image cap"
-    /> -->
-  <h2>{{content.title}}</h2>
-  <p><strong>Movie Name:</strong> {{content.moviename}}</p>
-  <p>Description: {{content.description}}</p>
-  <p appHoverAffect>Type: {{content.type}}</p>
-   
+<!-- ///////////// AFTER SEARCH CODE END -->
+
+
   <div>
-    Image: 
-    <p *ngFor="let type of content.type" [appHoverAffect]="'bold'">{{type}}</p>
+    <h2>No Type</h2>
+    <div *ngFor="let myFavMovie of myFavMovies | filterContentType" class="no-type">
+        <div class="card">
+          <!-- <ul>
+            <li ng-repeat="item in myArrayOfValues">{{myFavMovie.id}}</li>
+            <h2>Account : {{ myFavMovie.actor }}</h2>
+          </ul> -->
+          
+
+          <div *ngIf="myFavMovie.imgURL; else noImg">
+              <img
+              class="card-img-left"
+              src="{{ myFavMovie.imgURL }}"
+              height="400"
+              width="400"
+              (click)="showMovieInfo(myFavMovie.id, myFavMovie.title)"
+              alt="Card image cap"/>
+          </div>
+          <ng-template #noImg>
+            <img
+            class="card-img-left"
+            src="{{ defaultmovieimg }}"
+            height="400"
+            width="400"
+            (click)="showMovieInfo(myFavMovie.id, myFavMovie.title)"
+            alt="Card image cap"/>
+          </ng-template>
+   
+          <div class="col-md-8">
+            <h5 class="card-title" *ngIf="myFavMovie?.title">
+              {{ myFavMovie.title }}
+            </h5>
+            <p class="card-text" *ngIf="myFavMovie?.description">
+              {{ myFavMovie.description }}
+            </p>
+            
+            <p class="card-text" *ngIf="myFavMovie?.rating">
+              <strong>Rating</strong> {{ myFavMovie?.rating }}
+            </p>
+            <p class="card-text" *ngIf="myFavMovie?.actor">
+              <strong>actor</strong> {{ myFavMovie?.actor }}
+            </p>
+            <p class="card-text" *ngIf="myFavMovie?.type"  appHoverAffect="underline">
+              <strong>Type</strong> {{ myFavMovie?.type }}
+            </p>
+            <p class="card-text" *ngIf="myFavMovie?.tags"  >
+              <strong>Tags</strong> 
+              <span *ngFor="let tag of myFavMovie?.tags" appHoverAffect="bold"> {{tag}},
+              </span>
+            </p>
+          </div>
+        </div>
+    </div>
   </div>
 
-  <div *ngIf="content.imgURL; else defaultImg">
-    <img (click)="logIdTitle(content)" [src]="content.imgURL">
+  <div>
+    <h2>Classic Type</h2>
+    <div *ngFor="let myFavMovie of myFavMovies | filterContentType:'classic'" class="classic-type">
+        <div class="card">
+          <div *ngIf="myFavMovie.imgURL; else noImg">
+            <img
+            class="card-img-left"
+            src="{{ myFavMovie.imgURL }}"
+            height="400"
+            width="400"
+            (click)="showMovieInfo(myFavMovie.id, myFavMovie.title)"
+            alt="Card image cap"/>
+        </div>
+        <ng-template #noImg>
+          <img
+          class="card-img-left"
+          src="{{ defaultmovieimg }}"
+          height="400"
+          width="400"
+          (click)="showMovieInfo(myFavMovie.id, myFavMovie.title)"
+          alt="Card image cap"/>
+        </ng-template>
+
+          <div class="col-md-8">
+            <h5 class="card-title" *ngIf="myFavMovie?.title">
+              {{ myFavMovie.title }}
+            </h5>
+            <p class="card-text" *ngIf="myFavMovie?.description">
+              {{ myFavMovie.description }}
+            </p>
+            
+            <p class="card-text" *ngIf="myFavMovie?.rating">
+              <strong>Rating</strong> {{ myFavMovie?.rating }}
+            </p>
+            <p class="card-text" *ngIf="myFavMovie?.actor">
+              <strong>actor</strong> {{ myFavMovie?.actor }}
+            </p>
+            <p class="card-text" *ngIf="myFavMovie?.type"  appHoverAffect="underline">
+              <strong>Type</strong> {{ myFavMovie?.type }}
+            </p>
+            <p class="card-text" *ngIf="myFavMovie?.tags"  >
+              <strong>Tags</strong> 
+              <span *ngFor="let tag of myFavMovie?.tags" appHoverAffect="bold"> {{tag}},
+              </span>
+            </p>
+          </div>
+        </div>
+    </div>
   </div>
-  <ng-template #defaultImg>
-    <img (click)="logIdTitle(content)" [src]="defaultImageURL">
-  </ng-template>
-  
-</div>
 
-</div>
-</div>
+  <div>
+    <h2>Horror Type</h2>
+    <div *ngFor="let myFavMovie of myFavMovies | filterContentType:'Horror'" class="horror-type">
+        <div class="card">
+          <div *ngIf="myFavMovie.imgURL; else noImg">
+            <img
+            class="card-img-left"
+            src="{{ myFavMovie.imgURL }}"
+            height="400"
+            width="400"
+            (click)="showMovieInfo(myFavMovie.id, myFavMovie.title)"
+            alt="Card image cap"/>
+        </div>
+        <ng-template #noImg>
+          <img
+          class="card-img-left"
+          src="{{ defaultmovieimg }}"
+          height="400"
+          width="400"
+          (click)="showMovieInfo(myFavMovie.id, myFavMovie.title)"
+          alt="Card image cap"/>
+        </ng-template>
 
 
+
+          <div class="col-md-8">
+            <h5 class="card-title" *ngIf="myFavMovie?.title">
+              {{ myFavMovie.title }}
+            </h5>
+            <p class="card-text" *ngIf="myFavMovie?.description">
+              {{ myFavMovie.description }}
+            </p>
+            
+            <p class="card-text" *ngIf="myFavMovie?.rating">
+              <strong>Rating</strong> {{ myFavMovie?.rating }}
+            </p>
+            <p class="card-text" *ngIf="myFavMovie?.actor">
+              <strong>actor</strong> {{ myFavMovie?.actor }}
+            </p>
+            <p class="card-text" *ngIf="myFavMovie?.type"  appHoverAffect="underline">
+              <strong>Type</strong> {{ myFavMovie?.type }}
+            </p>
+            <p class="card-text" *ngIf="myFavMovie?.tags"  >
+              <strong>Tags</strong> 
+              <span *ngFor="let tag of myFavMovie?.tags" appHoverAffect="bold"> {{tag}},
+              </span>
+            </p>
+          </div>
+        </div>
+    </div>
+  </div>

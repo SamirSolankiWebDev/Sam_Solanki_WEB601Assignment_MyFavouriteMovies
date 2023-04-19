@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'Sam_Solanki_MyFavouriteNewMovies'`, () => {
+  it(`should have as title 'Samir_Solanki_movies'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('Sam_Solanki_MyFavouriteNewMovies');
+    expect(app.title).toEqual('Samir_Solanki_movies');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('Sam_Solanki_MyFavouriteNewMovies app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('Samir_Solanki_movies app is running!');
   });
 });
