@@ -3,7 +3,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 // import { NgForm } from '@angular/forms';
 // import { AddMyMoviesService } from '../add-my-movies.service';
 
-// import { Content } from '../helper-files/content-interface';
+import { Content } from '../helper-files/content-interface';
 
 
 @Component({
@@ -12,7 +12,6 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./create-content.component.less']
 })
 export class CreateContentComponent {
-//  constructor(private movieData: AddMyMoviesService) {}
 
   valueContainer: any = {}
   @Output() eventAction = new EventEmitter<any>();
@@ -20,6 +19,18 @@ export class CreateContentComponent {
 
   addContentEvents(){
     this.eventAction.emit(this.valueContainer);
+    
+    console.log("Fortest");
+    console.log("ID:-",this.valueContainer.id);
+    console.log("Title:-",this.valueContainer.title);
+    console.log("Type:-",this.valueContainer.type);
+    console.log("Description:-",this.valueContainer.description);
+    console.log("Moviename:-:",this.valueContainer.moviename);
+    console.log("ImageUrl:-:",this.valueContainer.imgURL);
+    console.log("Actor:-:",this.valueContainer.actor);
+    console.log("Rating:-:",this.valueContainer.rating);
+    
+
     this.valueContainer = {};
   }
 

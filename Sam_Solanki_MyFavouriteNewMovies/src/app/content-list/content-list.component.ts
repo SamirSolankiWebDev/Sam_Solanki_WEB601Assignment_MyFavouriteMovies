@@ -33,20 +33,43 @@ export class ContentListComponent  {
   public inputValue: String = '';
   public searchMsg: String = '';
 
+
+  ////////// New declaration
+  public myFavMovies: Content[] = [];
+  public IDsearch!: number;
+  public searchResults: any[] = [];
+
 // myFavMovie: any;
 
   logIdTitle(card: any){
     console.log(`${card.id}, ${card.title}`);
+    console.log(`ID:- ${card.id}`);
+     console.log(`Title:- ${card.title}`);
   }
   SearchTitle(){
     console.log(this.searchResult);
-    this.searchResult = this.contents.some(content => content.title === this.movieSearchText);
+    console.log("SearchResultText:-",this.searchResult);
+    console.log("SearchText:-",this.movieSearchText);
+   // this.searchResult = this.contents.some(content => content.title === this.movieSearchText);
+    this.searchResult = this.contents.some(content => content.title.toLocaleLowerCase().includes (this.movieSearchText.toLocaleLowerCase()));
   }
 
+  searchId(id: number) {
+    const movie = this.contents.find(movie => movie.id === id);
+    console.log('Movie ID For result:', movie);
+    if (movie) {
+      console.log('Movie found:', movie);
+      this.searchResults.push(movie);
+  
+    } else {
+      console.log('Movie not found');
+    }
+  }
 
   // ngOnInit(): void {}
 
   addContent(newInfo: any){
+    console.log(this.failedStringMessage);
     const promise = new Promise((resolve, reject) => {
       this.contents.push(newInfo);
       this.contents = [...this.contents]
@@ -60,6 +83,8 @@ export class ContentListComponent  {
       this.failedStringMessage = "Information not added";
     });
   }
+
+  
 
   constructor(){
     this.contents =  [
@@ -235,6 +260,8 @@ export class ContentListComponent  {
 
   //   this.myFavMovies = [...this.myFavMovies, ...filterResult];
   // }
+
+  
 
   showMovieInfo(id: any, title: String) {
     console.log({ id, title });

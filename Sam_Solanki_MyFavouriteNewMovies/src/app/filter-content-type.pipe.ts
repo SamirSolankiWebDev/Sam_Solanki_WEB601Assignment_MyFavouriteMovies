@@ -14,5 +14,6 @@ export class FilterContentTypePipe implements PipeTransform {
 
     return contentItem.filter(item => item.type === filter);
   }
+ 
 
 }
