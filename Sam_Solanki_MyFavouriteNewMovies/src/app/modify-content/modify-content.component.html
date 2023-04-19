@@ -1,0 +1,13 @@
+<div>
+  
+    Title: <br><input type="text"  [(ngModel)]="newMovie.title"><br><br>
+    Description: <br><input type="text"  [(ngModel)]="newMovie.description"><br><br>
+    actor: <br><input type="text"  [(ngModel)]="newMovie.actor"><br><br>
+    Image Link: <br><input type="text"  [(ngModel)]="newMovie.imgURL"> <br><br>
+    Rating: <br><input type="number"  [(ngModel)]="newMovie.rating"> <br><br>
+    Type: <br><input type="text" [(ngModel)]="newMovie.type"> <br><br>
+    
+    <div>
+        <button (click)="addmovie()">Add Movie</button>
+    </div>
+</div>
