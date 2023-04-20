@@ -23,17 +23,20 @@ import { MatCardModule } from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { NewdialogComponent } from './newdialog/newdialog.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ContentDetailComponent } from './content-detail/content-detail.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, ContentCardComponent, ContentListComponent, FilterContentTypePipe, HoverAffectDirective, MessagesComponent, ModifyContentComponent, NewdialogComponent],
+  declarations: [AppComponent, ContentCardComponent, ContentListComponent, FilterContentTypePipe, HoverAffectDirective, MessagesComponent, ModifyContentComponent, NewdialogComponent, ContentDetailComponent, PageNotFoundComponent],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule,  MatButtonModule,
     MatInputModule,
     MatDividerModule,
     MatDialogModule,
     MatIconModule,
-    MatCardModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false,
+    MatCardModule,AppRoutingModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false,
   delay: 1000}), BrowserAnimationsModule
 ],
   providers: [],

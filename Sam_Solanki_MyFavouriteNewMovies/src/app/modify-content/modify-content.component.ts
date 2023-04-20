@@ -27,7 +27,6 @@ export class ModifyContentComponent {
         if (result){
           this.newMovie = result;
           this.addMovie();
-          console.log("MovieAddedFor Myreference");
         }
       });
     }

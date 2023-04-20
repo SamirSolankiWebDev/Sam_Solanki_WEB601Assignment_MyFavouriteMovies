@@ -10,7 +10,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class movieService {
+export class MovieService {
   private httpOptions = {
     headers: new HttpHeaders({"Content-Type": "application/json"})
   }
@@ -28,8 +28,8 @@ export class movieService {
   }
 
   getContentById(id: number): Observable<any> {
-    const content = myFavMovies.find(c => c.id === id);
+    const content = this.http.get<Content>('api/movies/'+ id);
     this.messageService.addMessage(`Content item at id: ${id}`);
-    return of(content);
+    return content;
   }
 }

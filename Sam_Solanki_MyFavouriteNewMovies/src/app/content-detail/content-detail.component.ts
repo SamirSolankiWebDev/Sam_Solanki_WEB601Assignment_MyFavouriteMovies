@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { MovieService } from './movie.service';
+import { MovieService } from '../movie.service';import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-content-detail',
+  templateUrl: './content-detail.component.html',
+  styleUrls: ['./content-detail.component.scss']
 })
-export class AppComponent {
+export class ContentDetailComponent {
   title = 'Samir_Solanki_Movies';
   contentId: number = 5;
   topContent: any = {};
@@ -15,7 +16,7 @@ export class AppComponent {
 
 
 
-  constructor(private MovieService: MovieService){}
+  constructor(private route:ActivatedRoute, private MovieService: MovieService){}
 
   logId(){
     console.log(`ID: ${this.topContent.id}`);
@@ -25,7 +26,10 @@ export class AppComponent {
   }
 
   ngOnInit(){
+    this.route.paramMap.subscribe(params => {
+      this.contentId = Number(params.get('id') ?? 0);
     this.MovieService.getContentById(this.contentId).subscribe(content => this.topContent = content);
+    }); 
   }
 
   
