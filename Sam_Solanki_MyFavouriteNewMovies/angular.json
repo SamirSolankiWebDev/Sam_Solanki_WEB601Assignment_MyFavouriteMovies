@@ -3,11 +3,11 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Sam_Solanki_MyFavouriteNewMovies": {
+    "Samir_Solanki_Movies": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "less"
+          "style": "scss"
         }
       },
       "root": "",
@@ -24,13 +24,14 @@
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "less",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.less"
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -65,10 +66,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Sam_Solanki_MyFavouriteNewMovies:build:production"
+              "browserTarget": "Samir_Solanki_Movies:build:production"
             },
             "development": {
-              "browserTarget": "Sam_Solanki_MyFavouriteNewMovies:build:development"
+              "browserTarget": "Samir_Solanki_Movies:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +77,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Sam_Solanki_MyFavouriteNewMovies:build"
+            "browserTarget": "Samir_Solanki_Movies:build"
           }
         },
         "test": {
@@ -87,13 +88,14 @@
               "zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "less",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.less"
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.scss"
             ],
             "scripts": []
           }

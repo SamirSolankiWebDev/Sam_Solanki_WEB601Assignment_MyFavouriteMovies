@@ -1,0 +1,46 @@
+<div>
+    <div class="cardd">
+      <div *ngIf="topContent.imgURL; else noImg">
+          <img
+          class="card-img-left"
+          src="{{ topContent.imgURL }}"
+          height="400"
+          width="400"
+          (click)="showMovieInfo(topContent.id, topContent.title)"
+          alt="Card image cap"/>
+      </div>
+      <ng-template #noImg>
+        <img
+        class="card-img-left"
+        src="{{ defaultmovieimg }}"
+        height="400"
+        width="400"
+        (click)="showMovieInfo(topContent.id, topContent.title)"
+        alt="Card image cap"/>
+      </ng-template>
+
+      <div class="col-md-8">
+        <h5 class="card-title" *ngIf="topContent?.title">
+          {{ topContent.title }}
+        </h5>
+        <p class="card-text" *ngIf="topContent?.description">
+          {{ topContent.description }}
+        </p>
+        
+        <p class="card-text" *ngIf="topContent?.rating">
+          <strong>Rating</strong> {{ topContent?.rating }}
+        </p>
+        <p class="card-text" *ngIf="topContent?.actor">
+          <strong>actor</strong> {{ topContent?.actor }}
+        </p>
+        <p class="card-text" *ngIf="topContent?.type"  appHoverAffect="underline">
+          <strong>Type</strong> {{ topContent?.type }}
+        </p>
+        <p class="card-text" *ngIf="topContent?.tags"  >
+          <strong>Tags</strong> 
+          <span *ngFor="let tag of topContent?.tags" appHoverAffect="bold"> {{tag}},
+          </span>
+        </p>
+      </div>
+    </div>
+</div>

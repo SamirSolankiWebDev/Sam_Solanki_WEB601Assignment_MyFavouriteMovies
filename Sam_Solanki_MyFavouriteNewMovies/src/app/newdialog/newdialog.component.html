@@ -1,0 +1,16 @@
+<div>
+  
+    <mat-form-field><mat-label>Title:</mat-label><input matInput type="text"  [(ngModel)]="newMovie.title"></mat-form-field> <br>
+    <mat-form-field><mat-label>Description: </mat-label><input matInput type="text"  [(ngModel)]="newMovie.description"></mat-form-field><br><br>
+        <mat-form-field><mat-label>Moviename: </mat-label><input matInput type="text"  [(ngModel)]="newMovie.actor"></mat-form-field><br><br>
+            <mat-form-field><mat-label>Image Link: </mat-label><input matInput type="text"  [(ngModel)]="newMovie.imgURL"> </mat-form-field><br><br>
+                <mat-form-field><mat-label> Rating: </mat-label><input matInput type="number"  [(ngModel)]="newMovie.rating"> </mat-form-field><br><br>
+                    <mat-form-field><mat-label>Type: </mat-label><input matInput type="text" [(ngModel)]="newMovie.type"></mat-form-field><br><br>
+    
+    <div>
+        <button    mat-raised-button color="primary"
+        (click)="addMovie()">Add Movie</button>
+        <button    mat-raised-button color="warn"
+        (click)="closeDialog()">Close<mat-icon>close</mat-icon></button>
+    </div>
+</div>

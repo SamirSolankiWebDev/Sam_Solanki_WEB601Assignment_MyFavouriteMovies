@@ -1,0 +1,188 @@
+  <main>
+    <app-modify-content (onCreation)="addMovies($event)"></app-modify-content>
+      <div class="SearchbyTitle">
+
+        <div>
+          <mat-form-field>
+            <input matInput type="text" [(ngModel)]="inputValue" placeholder="Search By ID Here" >
+
+          </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary"
+          (click)="SearchbyTitle()">Search
+        </button>
+      </div>
+      <div *ngIf="Search !== null"  >
+        <p [style.color] = "Search ? 'green' : 'red'" >
+           {{ Search ? 'Matched' : 'Not Matched'}}
+           </p>
+      </div>
+    
+  </main>
+  <div>
+    <h2>No Type</h2>
+    <div *ngFor="let myFavMovie of myFavMovies | filterContentType" class="no-type">
+        <mat-card class="card">
+          <mat-card-header>
+            <div *ngIf="myFavMovie.imgURL; else noImg">
+              <a routerLink="/contents/{{myFavMovie.id}}" >
+
+            <img
+            class="card-img-left"
+            src="{{ myFavMovie.imgURL }}"
+            height="400"
+            width="400"
+            (click)="showMovieInfo(myFavMovie.id, myFavMovie.title)"
+            alt="Card image cap"/></a>
+        </div>
+        <ng-template #noImg>
+          <a routerLink="/contents/{{myFavMovie.id}}" >
+
+          <img
+          class="card-img-left"
+          src="{{ defaultmovieimg }}"
+          height="400"
+          width="400"
+          (click)="showMovieInfo(myFavMovie.id, myFavMovie.title)"
+          alt="Card image cap"/></a>
+        </ng-template>
+      </mat-card-header>
+   
+         <mat-card-content>
+          <div class="col-md-8">
+            <h5 class="card-title" *ngIf="myFavMovie?.title">
+              {{ myFavMovie.title }}
+            </h5>
+            
+            
+            <p class="card-text" *ngIf="myFavMovie?.rating">
+              <strong>Rating</strong> {{ myFavMovie?.rating }}
+            </p>
+            <p class="card-text" *ngIf="myFavMovie?.actor">
+              <strong>actor</strong> {{ myFavMovie?.actor }}
+            </p>
+            <p class="card-text" *ngIf="myFavMovie?.type"  appHoverAffect="underline">
+              <strong>Type</strong> {{ myFavMovie?.type }}
+            </p>
+            <p class="card-text" *ngIf="myFavMovie?.tags"  >
+              <strong>Tags</strong> 
+              <span *ngFor="let tag of myFavMovie?.tags" appHoverAffect="bold"> {{tag}},
+              </span>
+            </p>
+          </div>
+         </mat-card-content>
+        </mat-card>
+    </div>
+  </div>
+
+  <div>
+    <h2>Classic Type</h2>
+    <div *ngFor="let myFavMovie of myFavMovies | filterContentType:'classic'" class="classic-type">
+      <mat-card class="card">
+        <mat-card-header>
+          <div *ngIf="myFavMovie.imgURL; else noImg">
+            <a routerLink="/contents/{{myFavMovie.id}}" >
+
+          <img
+          class="card-img-left"
+          src="{{ myFavMovie.imgURL }}"
+          height="400"
+          width="400"
+          (click)="showMovieInfo(myFavMovie.id, myFavMovie.title)"
+          alt="Card image cap"/>
+            </a> 
+
+      </div>
+      <ng-template #noImg>
+        <a routerLink="/contents/{{myFavMovie.id}}" >
+        <img
+        class="card-img-left"
+        src="{{ defaultmovieimg }}"
+        height="400"
+        width="400"
+        (click)="showMovieInfo(myFavMovie.id, myFavMovie.title)"
+        alt="Card image cap"/>
+        </a>
+      </ng-template>
+    </mat-card-header>
+ 
+       <mat-card-content>
+        <div class="col-md-8">
+          <h5 class="card-title" *ngIf="myFavMovie?.title">
+            {{ myFavMovie.title }}
+          </h5>
+         
+          
+          <p class="card-text" *ngIf="myFavMovie?.rating">
+            <strong>Rating</strong> {{ myFavMovie?.rating }}
+          </p>
+          <p class="card-text" *ngIf="myFavMovie?.actor">
+            <strong>actor</strong> {{ myFavMovie?.actor }}
+          </p>
+          <p class="card-text" *ngIf="myFavMovie?.type"  appHoverAffect="underline">
+            <strong>Type</strong> {{ myFavMovie?.type }}
+          </p>
+          <p class="card-text" *ngIf="myFavMovie?.tags"  >
+            <strong>Tags</strong> 
+            <span *ngFor="let tag of myFavMovie?.tags" appHoverAffect="bold"> {{tag}},
+            </span>
+          </p>
+        </div>
+       </mat-card-content>
+      </mat-card>
+  </div>
+
+  <div>
+    <h2>Action Type</h2>
+    <div *ngFor="let myFavMovie of myFavMovies | filterContentType:'Action'" class="Action-type">
+        <mat-card class="card">
+          <mat-card-header>
+            <div *ngIf="myFavMovie.imgURL; else noImg">
+              <a routerLink="/contents/{{myFavMovie.id}}" >
+
+            <img
+            class="card-img-left"
+            src="{{ myFavMovie.imgURL }}"
+            height="400"
+            width="400"
+            (click)="showMovieInfo(myFavMovie.id, myFavMovie.title)"
+            alt="Card image cap"/></a>
+        </div>
+        <ng-template #noImg>
+          <a routerLink="/contents/{{myFavMovie.id}}" >
+          <img
+          class="card-img-left"
+          src="{{ defaultmovieimg }}"
+          height="400"
+          width="400"
+          (click)="showMovieInfo(myFavMovie.id, myFavMovie.title)"
+          alt="Card image cap"/></a>
+        </ng-template>
+      </mat-card-header>
+   
+         <mat-card-content>
+          <div class="col-md-8">
+            <h5 class="card-title" *ngIf="myFavMovie?.title">
+              {{ myFavMovie.title }}
+            </h5>
+            
+            
+            <p class="card-text" *ngIf="myFavMovie?.rating">
+              <strong>Rating</strong> {{ myFavMovie?.rating }}
+            </p>
+            <p class="card-text" *ngIf="myFavMovie?.actor">
+              <strong>actor</strong> {{ myFavMovie?.actor }}
+            </p>
+            <p class="card-text" *ngIf="myFavMovie?.type"  appHoverAffect="underline">
+              <strong>Type</strong> {{ myFavMovie?.type }}
+            </p>
+            <p class="card-text" *ngIf="myFavMovie?.tags"  >
+              <strong>Tags</strong> 
+              <span *ngFor="let tag of myFavMovie?.tags" appHoverAffect="bold"> {{tag}},
+              </span>
+            </p>
+          </div>
+         </mat-card-content>
+        </mat-card>
+    </div>
+  </div>

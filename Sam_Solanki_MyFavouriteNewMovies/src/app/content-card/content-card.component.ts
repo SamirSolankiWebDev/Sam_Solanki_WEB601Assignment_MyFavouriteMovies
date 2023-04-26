@@ -1,29 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 import { Content } from '../helper-files/content-interface';
-import { ContentList } from '../helper-files/content-list';
+
 
 @Component({
   selector: 'app-content-card',
   templateUrl: './content-card.component.html',
-  styleUrls: ['./content-card.component.less']
+  styleUrls: ['./content-card.component.scss']
 })
-export class ContentCardComponent {
+export class ContentCardComponent  implements OnInit {
+ 
 
-  MovieListArray=new ContentList();
-  ngOnInit(){
+   ngOnInit(): void {
+   }
+ 
 
-    const MovieOne:Content={
-      id:0,
-      title:'Action',
-      description:'Actionmovie',
-      moviename:'Avengers',
-      actor:'jack',
-      rating:5,
-      imgURL:'https://angular.io/assets/images/logos/angular/angular.png'
-      
-    }
-      this.MovieListArray.AddMoviesFunction(MovieOne);
-    
-  }
 
 }
